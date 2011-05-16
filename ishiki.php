@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 if(isset($_GET["sym"])&&isset($_GET["tag"])) {
+	if($_GET["sym"]=="") $_GET["sym"] = "#";
+	if($_GET["tag"]=="") $_GET["tag"] = "eeis2011s";
 	$query = "?".($_GET["sym"]=="#"?"q=".urlencode($_GET["sym"]):"from=").$_GET["tag"]."&rpp=100";
 	$title = $_GET["sym"].$_GET["tag"];
 	$selected = $_GET["sym"]=="#" ? array(" selected","") : array(""," selected") ;
