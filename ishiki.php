@@ -22,6 +22,7 @@ if(isset($_GET["sym"])&&isset($_GET["tag"])) {
 		h1         { font-weight: bold; font-size: 18px; position: absolute; left: 50px; top: 10px; }
 		h2         { position: fixed; right: 50px; top: 10px; }
 		h2,h2 span { font-weight: bold; font-size: 18px;}
+		h3         { font-size: 10px; position: absolute; left: 50px; top: 36px; }
 		p          { margin: 50px; }
 		input      { margin:4px; padding:2px; margin-left:0; }
 		#point     { font-weight: bold; font-size: 20px; }
@@ -93,6 +94,7 @@ function ColorSwitch($value){
 }
 ?>
 <h1><?php echo $title; ?></h1>
+<h3>#:hashtag @:openAccountName</h3>
 <h2>意識の高さ平均: <span style="color:<?php echo ColorSwitch($synth/100); ?>;"><?php echo $synth/100; ?></span></h2>
 </body>
 </html>
