@@ -15,6 +15,7 @@ if(isset($_GET["sym"])&&isset($_GET["tag"])) {
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<style>
 		*          { margin:0; padding:0; font: 12px/1.2 courier,monospace; }
 		body       { margin-top: 80px; }
@@ -23,7 +24,9 @@ if(isset($_GET["sym"])&&isset($_GET["tag"])) {
 		h2         { position: fixed; right: 50px; top: 10px; }
 		h2,h2 span { font-weight: bold; font-size: 18px;}
 		h3         { font-size: 10px; position: absolute; left: 50px; top: 36px; }
+		a          { border: 0; }
 		p          { margin: 50px; }
+		p span     { float:left; padding-right: 20px; }
 		input      { margin:4px; padding:2px; margin-left:0; }
 		#point     { font-weight: bold; font-size: 20px; }
 	</style>
@@ -54,6 +57,7 @@ foreach($xml->entry as $val) {
 	$points = $length*($length/100) + $kcodes*7.2 - $nwords*21.6 + $pwords*21.6;
 	$synth += $points;
 	echo "<p>\n";
+	echo "\t".'<span><a href="'.$val->author->uri.'"><img src="'.$val->link[1]->attributes()->href.'"></a></span>'."\n";
 	echo "\t".htmlspecialchars(trim($val->title), ENT_QUOTES, 'UTF-8')."<br>\n";
 	echo "\t".'<a href="'.$val->link[0]->attributes()->href.'" target="_blank">'.date("Y:m:d H:i:s",strtotime($val->updated)).'</a>';
 	echo ' - ';
@@ -61,7 +65,7 @@ foreach($xml->entry as $val) {
 	$col = ColorSwitch($points);
 	echo "\t".'<span id="point" style="color:'.$col.';">Point: '.$points.'</span><br>'."\n";
 	if(isset($_GET["debug"])){
-		echo"抽出対象: ".$content."<br>";
+		echo"抽出対象: ".htmlspecialchars($content, ENT_QUOTES, 'UTF-8')."<br>";
 		echo"文字列長点: ".($length*($length/100))."<br>";
 		echo"漢字列数点: ".($kcodes*7.2)."<br>";
 		echo"Ｎ文字列点: ".($nwords*21.6)." (減算)<br>";
