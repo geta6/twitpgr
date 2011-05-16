@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 if(isset($_GET["sym"])&&isset($_GET["tag"])) {
 	$query = "?".($_GET["sym"]=="#"?"q=".urlencode($_GET["sym"]):"from=").$_GET["tag"]."&rpp=100";
 	$title = $_GET["sym"].$_GET["tag"];
@@ -52,7 +53,7 @@ foreach($xml->entry as $val) {
 	$points = $length*($length/100) + $kcodes*7.2 - $nwords*21.6 + $pwords*21.6;
 	$synth += $points;
 	echo "<p>\n";
-	echo "\t".strip_tags(trim($val->title))."<br>\n";
+	echo "\t".htmlspecialchars(strip_tags(trim($val->title)))."<br>\n";
 	echo "\t".'<a href="'.$val->link[0]->attributes()->href.'" target="_blank">'.date("Y:m:d H:i:s",strtotime($val->updated)).'</a>';
 	echo ' - ';
 	echo '<a href="'.$val->author->uri.'" target="_blank">'.$val->author->name.'</a><br>'."\n";
