@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style>
+	*          { margin:0; padding:0; font: 12px/1.2 courier,monospace; }
+	body       { margin-top: 80px; }
+	form       { margin: 0 50px; }
+	h1         { font-weight: bold; font-size: 18px; position: absolute; left: 50px; top: 10px; }
+	h2         { position: fixed; right: 50px; top: 10px; }
+	h2,h2 span { font-weight: bold; font-size: 18px; }
+	h3         { font-size: 10px; position: absolute; left: 50px; top: 36px; }
+	h4         { margin: 20px 50px; font-weight: bold; font-size: 12px; }
+	a          { border: 0; }
+	b          { font-weight:bold; }
+	p          { margin: 20px 50px; }
+	ul         { margin: 20px 70px; }
+	p span     { float:left; padding-right: 20px; }
+	input      { margin:4px; padding:2px; margin-left:0; }
+	#point     { font-weight: bold; font-size: 20px; }
+	</style>
+</head>
+<body>
+	<h1>Document</h1>
+	<h3><a href="http://web.sfc.keio.ac.jp/~s08232hk/ishiki/">Back</a></h3>
+	<h2></h2>
+	<h4>About</h4>
+	<p>
+		Measure consciousness.<br>
+		by <a href="http://twitter.com/geta6">@geta6</a>
+	</p>
+	<h4>Usage</h4>
+	<p>
+		If <b>hashtag or normal search</b> then <b>submit text with NO-MARK</b>.<br>
+		If <b>measure the account tweet</b> then <b>submit text with @</b>.<br>
+		If <b>measure the single text</b> then <b>submit text with $</b>.<br>
+		If account is locked, no results be found.
+	</p>
+	<h4>Point</h4>
+	<p>
+		point &lt; __0 : low<br>
+		point &lt; 180 : normal<br>
+		point &lt; 500 : higher<br>
+		point over 500 : madness<br>
+	</p>
+	<h4>API(笑)</h4>
+	<ul>
+		<li>"q" : Will analyze a single text, json returned.
+			<ul>
+				<li>points : ISHIKI point.</li>
+				<li>length : text length.</li>
+				<li>kcodes : KANJI length.</li>
+				<li>ucodes : avarage of Unicode.</li>
+				<li>nwords : negative words.</li>
+				<li>pwords : positive words.</li>
+				<li>object : text object.</li>
+			</ul>
+		</li>
+	</ul>
+	<h4>Example</h4>
+	<p>
+		<a href="http://web.sfc.keio.ac.jp/~s08232hk/ishiki/eeis2011s">http://web.sfc.keio.ac.jp/~s08232hk/ishiki/eeis2011s</a><br>
+		<a href="http://web.sfc.keio.ac.jp/~s08232hk/ishiki/@geta6">http://web.sfc.keio.ac.jp/~s08232hk/ishiki/@geta6</a><br>
+		<a href="http://web.sfc.keio.ac.jp/~s08232hk/ishiki/$意識高杉わろた">http://web.sfc.keio.ac.jp/~s08232hk/ishiki/$意識高杉わろた</a><br>
+		<a href="http://web.sfc.keio.ac.jp/~s08232hk/ishiki/?q=意識高すぎわろた">http://web.sfc.keio.ac.jp/~s08232hk/ishiki/?q=意識高すぎわろた</a><br>
+	</p>
+</body>
+</html>
