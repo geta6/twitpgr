@@ -1,4 +1,4 @@
-	RewriteEngine on
-	RewriteBase /~s08232hk/ishiki
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^(.*)$ index.php?tag=$1 [QSA,L]
+RewriteEngine on
+RewriteBase /~s08232hk/ishiki
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?tag=$1 [QSA,L]
