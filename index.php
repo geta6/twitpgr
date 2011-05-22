@@ -6,7 +6,6 @@ header('Content-Type: text/html; charset=UTF-8');
 switch(true) {
 	case isset($_GET['q'])                : echo json_encode(PointDetect($_GET['q'])); exit;
 	case isset($_POST["tag"])             : header("Location: ./".$_POST["tag"]); exit;
-	case $_GET["tag"]=="doc.html"         : echo file_get_contents("doc.html"); exit;
 	case $_GET["tag"]==""                 : $_GET["tag"] = "eeis2011s";
 	default :
 		$start=microtime(true);
@@ -45,6 +44,7 @@ if($kind=="$") {
 }else{
 	$xml = simplexml_load_file("http://search.twitter.com/search.atom?rpp=100&".($kind=="@"?"from=".substr($_GET["tag"],1):"q=".$_GET["tag"]));
 	$sum = array("point"=>0,"times"=>0);
+    $content = "";
 	foreach($xml->entry as $val) {
 		$val->title = htmlspecialchars($val->title, ENT_QUOTES, 'UTF-8');
 		if(preg_match("/^RT/",$val->title)) continue;
@@ -129,8 +129,8 @@ function WordDetect($subject,$delimiters) {
 function UnicodeDetect($subject){
 	$subject = str_replace("\\","#",(String)json_encode($subject));
 	preg_match_all("/#u([a-z0-9]{4,4})/",$subject,$matches);
-	$max;
-	$pre = 0;
+	$max = $pre = $sum = $key = 0;
+
 	foreach($matches[1] as $key=>$value){
 		$now = hexdec($value);
 		if($max<$now) $max=$now;
@@ -169,7 +169,7 @@ function ColorSwitch($points){
 </head>
 <body>
 	<h1><?php echo "$label (".number_format(microtime(true)-$start,2)."s)"; ?></h1>
-	<h3>nomark:hashtag @:openAccountName $:SingleText <a href="doc.html">Document</a></h3>
+	<h3>nomark:hashtag @:openAccountName $:SingleText <a href="/doc.html">Document</a></h3>
 	<form action="./" method="POST">
 		<input type="text" name="tag" value="<?php echo$_GET["tag"];?>">
 		<input type="submit">
