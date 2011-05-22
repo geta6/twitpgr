@@ -26,7 +26,7 @@ if($kind=="$") {
 	$object = substr($_GET["tag"],1);
 	$guess = PointDetect($object);
 	$color = ColorSwitch($guess["points"]);
-	$content .= '
+	$content = '
 		<table>
 		<tr>
 		<td class="head">
